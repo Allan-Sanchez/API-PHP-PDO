@@ -69,4 +69,27 @@ class Category
         printf("Error: %s.\n",$stmt->error);
         return false;
     }
+
+    public function updateCategory()
+    {
+        //create query
+        $query = 'UPDATE '.$this->table.' SET name = :name WHERE id = :id';
+
+        //stament
+        $stmt= $this->conn->prepare($query);
+
+        //clean data
+        $this->name = html_entity_decode(strip_tags($this->name));
+        $this->id = html_entity_decode(strip_tags($this->id));
+
+        //bind param
+        $stmt->bindParam(':name',$this->name);
+        $stmt->bindParam(':id',$this->id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        printf("Error: %s.\n",$stmt->error);
+        return false;
+    }
 }
