@@ -5,7 +5,7 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
 include_once '../../config/Database.php';
-include_once '../../api/category.php';
+include_once '../../model/Category.php';
 
 //Instantiate DB & connect
 $database = new Database();

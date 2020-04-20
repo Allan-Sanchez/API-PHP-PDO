@@ -66,15 +66,12 @@ class Post
          $stmt->execute();
 
          $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
          $this->title = $row['title'];
          $this->author = $row['author'];
          $this->body = $row['body'];
          $this->category_id = $row['category_id'];
          $this->category_name = $row['category_name'];
- 
-        //  return $stmt;
- 
+
     }
 
     public function createPost()

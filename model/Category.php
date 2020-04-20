@@ -27,4 +27,22 @@ class Category
 
         return $stmt;
     }
+
+    public function getCategorySingle()
+    {
+        //create querry
+        $query = 'SELECT id, name FROM '.$this->table.' WHERE id = :id';
+
+        //prepate query
+        $stmt = $this->conn->prepare($query);
+        
+        //bind id
+        $stmt->bindParam(':id',$this->id);
+
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $this->id = $row['id'];
+        $this->name = $row['name'];
+    }
 }
