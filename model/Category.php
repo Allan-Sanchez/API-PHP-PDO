@@ -92,4 +92,25 @@ class Category
         printf("Error: %s.\n",$stmt->error);
         return false;
     }
+
+    public function deleteCategory()
+    {
+        //create query
+        $query = 'DELETE FROM '.$this->table.' WHERE id =:id';
+
+        //prere statemant
+        $stmt = $this->conn->prepare($query);
+
+        //clean data
+        $this->id = htmlspecialchars(strip_tags($this->id));
+
+        //bind param
+        $stmt->bindParam(':id',$this->id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        printf("Error: %s.\n",$stmt->error);
+        return false;
+    }
 }
