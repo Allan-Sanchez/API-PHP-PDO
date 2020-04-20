@@ -1,0 +1,12 @@
+{
+    "name": "allan_sanchez/php-api-pdo",
+    "description": "Api rest writting with php and pdo",
+    "authors": [
+        {
+            "name": "Allan-Sanchez",
+            "email": "asanchezrixtun@gmail.com"
+        }
+    ],
+    "require": {}
+    
+}
