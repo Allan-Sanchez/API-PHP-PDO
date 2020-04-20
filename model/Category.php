@@ -45,4 +45,28 @@ class Category
         $this->id = $row['id'];
         $this->name = $row['name'];
     }
+
+    public function createCategory()
+    {
+        // create query
+        $query = 'INSERT INTO '.$this->table.'
+                    SET
+                    name =:name';
+        
+        // prepare stament
+        $stmt= $this->conn->prepare($query);
+
+        // clean data
+        $this->name = htmlspecialchars(strip_tags(($this->name)));
+
+        // bind param
+
+        $stmt->bindParam(':name',$this->name);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        printf("Error: %s.\n",$stmt->error);
+        return false;
+    }
 }
